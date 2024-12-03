@@ -1,8 +1,7 @@
 const { google } = require('googleapis');
-const path = require('path');
 
 // Path to your service account key file
-const SERVICE_ACCOUNT_FILE = path.join(__dirname, 'service-account-key.json');
+const GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS; // Replace with the path to your service account key file
 
 // The ID of your Google Sheet
 const SHEET_ID = 'YOUR_SHEET_ID'; // Replace with your Google Sheet ID
@@ -15,7 +14,7 @@ async function readGoogleSheet() {
   try {
     // Authenticate with the service account
     const auth = new google.auth.GoogleAuth({
-      keyFile: SERVICE_ACCOUNT_FILE,
+      keyFile: GOOGLE_APPLICATION_CREDENTIALS,
       scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
     });
 
